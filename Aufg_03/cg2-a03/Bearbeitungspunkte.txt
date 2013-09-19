@@ -1,0 +1,11 @@
+*** shaders.js ***
+- Shader definieren
+
+*** texture.js ***
+- scene.draw(); in _allTexturesLoadedCallback
+
+*** scene.js ***
+
+*** planet.fs ***
+
+*** planet.vs ***

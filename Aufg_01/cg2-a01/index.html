@@ -1,0 +1,190 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!--
+     *
+     * JavaScript / Canvas teaching framwork 
+     * (C)opyright Hartmut Schirmacher, hschirmacher.beuth-hochschule.de 
+     *
+    -->
+
+    <title>CG2 A1: Lines, Curves &amp; Canvas</title>
+    
+    <!-- import main module using RequireJS -->
+    <script data-main="main.js" src="../lib/require.js"></script>
+    
+    <!-- import style sheet -->
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css">
+    
+</head>
+
+<body>
+
+  <!-- this element will be used to diplay errors -->
+  <pre id="error"></pre>
+  
+  <!-- centered region with drawing canvas and parameter area -->
+  <div align="center">
+  
+    <canvas id="drawing_area" width="500" height="400" style="position:relative;">
+        <!-- NOTE: the "position:relative" is required due to the current  
+             implementation of mouse coordinate processing in module "util". -->
+        If you see this text, your browser probably does not 
+        support the HTML5 canvas 2D drawing context. 
+    </canvas>
+	
+     
+    <div id="param_area" >
+            
+    	<div id="button_area">
+            <h3>Create Objects:</h3>
+        
+                <button id="btnNewLine" type="button"   >New Line</button>
+            <br>
+                <button id="btnNewCircle" type="button" >New Circle</button>
+            <br>
+                <button id="btnNewParaCurve" type="button" >New Parametric Curve</button>
+            <br>
+                <button id="btnNewBezierC" type="button" >New Bezier Curve</button>
+            
+            <!--ul>
+                <li>
+                    <button id="btnNewLine" type="button"   >New Line</button>
+                </li>
+                <li>
+                    <button id="btnNewCircle" type="button" >New Circle</button>
+                </li>
+                <li>
+                    <button id="btnNewParametricC" type="button" >New Parametric Curve</button>
+                </li>
+                <li>
+                    <button id="btnNewBezierC" type="button" >New Bezier Curve</button>
+                </li>
+                <!-- add more here... ->
+            </ul-->
+        </div>
+    
+        <div id="prop_area" class="propsContainer">
+            <h3> Object Properties: </h3>
+            <ul id="obj_props">
+				<!--<div id="propsAll" class="propsAll">-->                    
+                <li id="propColor">                        
+                    <div class="labelStyle"><label for="test">Color:</label></div>
+                    <input id="ipColor" class="input" type="color" name="Color" autocomplete="off"></input>
+                </li>
+                <li id="propThickness">                        
+                    <div class="labelStyle"><label for="test2">Thickness:</label></div>
+                    <input id="ipThickness" class="input" type="number" name="Thickness" autocomplete="off" min="1" max="5"></input>
+                </li>
+                <!--</div>-->
+                <div id="lineProps"  class="disProps">    
+                    <li>                        
+                        <div class="labelStyleCoord"><label for="lineP0x">P0</label></div>
+                        ( 
+                        <input id="ipLineP0x" class="inputCoord xMax" type="number" name="p0x"></input>
+                        /
+                        <input id="ipLineP0y" class="inputCoord yMax" type="number" name="p0y"></input>
+                        )
+                    </li>
+                    <li>                       
+                        <div class="labelStyleCoord"><label for="lineP1x">P1</label></div>
+                        (
+                        <input id="ipLineP1x" class="inputCoord xMax" width="40" type="number" name="p1x"></input>
+                        /
+                        <input id="ipLineP1y" class="inputCoord yMax" type="number" name="p1y"></input>
+                        )
+                    </li>
+                </div>
+                <div id="circleProps" class="disProps">    
+                    <li>                        
+                        <div class="labelStyleCoord"><label for="ipCircMPx">Midpoint</label></div>
+                        (
+                        <input id="ipCircMPx" class="inputCoord xMax " type="number" name="mPx"></input>
+                        /
+                        <input id="ipCircMPy" class="inputCoord yMax" type="number" name="mPy"></input>
+                        )
+                    </li>
+                    <li>                        
+                        <div class="labelStyle"><label for="circleRadius">Radius:</label></div>
+                        	<input id="circRadius" class="input" type="number" name="cRadius" min="5" max="240"></input>
+                    	
+                    </li>
+                </div>
+				<div id="bezierProps" class="disProps">    
+                    <li>                        
+                        <div class="labelStyleCoord"><label for="ipBezierP0x">P0x</label></div>
+                        (
+                        <input id="ipBezierP0x" class="inputCoord xMax " type="number" name="P0x"></input>
+                        /
+                        <input id="ipBezierP0y" class="inputCoord yMax" type="number" name="P0y"></input>
+                        )
+                    </li>
+					<li>                        
+                        <div class="labelStyleCoord"><label for="ipBezierP1x">P1x</label></div>
+                        (
+                        <input id="ipBezierP1x" class="inputCoord xMax " type="number" name="P1x"></input>
+                        /
+                        <input id="ipBezierP1y" class="inputCoord yMax" type="number" name="P1y"></input>
+                        )
+                    </li>
+					<li>                        
+                        <div class="labelStyleCoord"><label for="ipBezierP2x">P2x</label></div>
+                        (
+                        <input id="ipBezierP2x" class="inputCoord xMax " type="number" name="P2x"></input>
+                        /
+                        <input id="ipBezierP2y" class="inputCoord yMax" type="number" name="P2y"></input>
+                        )
+                    </li>
+					<li>                        
+                        <div class="labelStyleCoord"><label for="ipBezierP3x">P3x</label></div>
+                        (
+                        <input id="ipBezierP3x" class="inputCoord xMax " type="number" name="P3x"></input>
+                        /
+                        <input id="ipBezierP3y" class="inputCoord yMax" type="number" name="P3y"></input>
+                        )
+                    </li>
+
+                    <li>                        
+                        <div class="labelStyle"><label for="circleRadius">Radius:</label></div>
+                        	<input id="circRadius" class="input" type="number" name="cRadius" min="5" max="240"></input>
+                    	
+                    </li>
+					
+                </div>
+                <div id="paraCurveProps" class="disProps">
+                	<li>
+                    	<div class="labelStyle"><label for="ipParaCurveMinT" >min t: </label></div>
+                        <input id="ipParaCurveMinT" class="input min t" type="number" name="ParaCurveMinT"></input>
+                    </li>
+                    <li>
+                    	<div class="labelStyle"><label for="ipParaCurveMaxT" >max t: </label></div>
+                        <input id="ipParaCurveMaxT" class="input max t" type="number" name="ParaCurveMaxT"></input>
+                    </li>
+                    <li>
+                    	<div class="labelStyle"><label for="ipParaCurveSeg" >segments: </label></div>
+                        <input id="ipParaCurveSeg" class="input" type="number" name="ParaCurveSeg"></input>
+                    </li>
+                    <li>
+                    	<div class="paraCLabelStyle"><label for="ipParaCurveX_t" >x(t): </label></div>
+                        <input id="ipParaCurveX_t" class="inputFunc maxX" type="text" name="ParaCurveX(t)" ></input>
+                    </li>
+                    <li>
+                        <div class="paraCLabelStyle"><label for="ipParaCurveY_t" >y(t): </label></div>
+                        	<input id="ipParaCurveY_t" class="inputFunc maxY" type="text" name="ParaCurveY(t)" ></input>
+					</li>
+					<li>
+					  <div class="labelStyle"><lable for="cbParaCurve">Tickmarks:</lable></div>
+					  <input id="cbParaCurve" class="input" type="checkbox">
+					</li>
+                </div>               	        
+            </ul>
+    	</div>
+    </div>
+        
+    <div style="float:clear;">
+    </div>
+    
+  </div>
+  
+</body>
+</html>

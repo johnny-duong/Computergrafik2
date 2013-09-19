@@ -1,0 +1,119 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+
+    <title>CG2 A2: WebGL Robot</title>
+    
+    <!-- import main module using RequireJS -->
+    <script data-main="robot.js" src="../lib/require.js"></script>
+    
+    <!-- import style sheet -->
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css">
+    
+</head>
+
+<body>
+
+  <!-- this element will be used to diplay errors -->
+  <pre id="error"></pre>
+  
+  <!-- centered region with drawing canvas and parameter area -->
+  <div align="center">
+  
+<!--
+    <div>
+        <button id="btnSomething" type="button"   >Do Something!</button>
+    </div>
+
+    <br>
+-->
+  
+    <canvas id="drawing_area" width="500" height="400" style="position:relative;">
+        <!-- NOTE: the "position:relative" is required due to the current  
+             implementation of mouse coordinate processing in module "util". -->
+        If you see this text, your browser probably does not 
+        support HTML5. 
+    </canvas>
+    
+    <div id="param_area" >
+                
+        <table height="50" id="param_table">
+          <tr class="animParam">
+            <td width="100">Animation:</td>
+            <td width="106">
+                <input id="anim_Toggle" class="inputParam" type="checkbox"></input>
+            </td>
+          </tr>
+            <td height="35">Speed:</td>
+            <td>
+                <input id="anim_Speed" class="inputParam" type="number"></input>
+                °/sec
+            </td>
+          </tr>
+          <!-- please note: more rows will be added automatically by html_controller.js -->
+	 	</table>
+         
+    </div>
+    <div id="legende_area">
+    	<table width="231" height="100">
+          <tr class="animParam">
+            <td width="125"><strong>Legende</strong></td>
+          </tr> 	
+          <tr>
+            <td>body part</td>
+            <td width="94">key</td>
+          </tr>
+          <tr>
+            <td><kbd>world X</kbd></td>
+            <td><kbd>x / shift+x</kbd></td>
+          </tr>	
+          <tr>
+            <td><kbd>world Y</kbd></td>
+            <td><kbd>y / shift+y</kbd></td>
+          </tr>
+          <tr>
+            <td><kbd>head</kbd></td>
+            <td><kbd>h / shift+h</kbd></td>
+          </tr>	
+          <tr>
+            <td><kbd>left arm</kbd></td>
+            <td><kbd>q / shift+q</kbd></td>
+          </tr>
+          <tr>
+            <td><kbd>right arm</kbd></td>
+            <td><kbd>w / shift+w</kbd></td>
+          </tr>	
+          <tr>
+            <td><kbd>left forearm</kbd></td>
+            <td><kbd>e / shift+e</kbd></td>
+          </tr>
+          <tr>
+            <td><kbd>right forearm</kbd></td>
+            <td><kbd>r / shift+r</kbd></td>
+          </tr>	
+          <tr>
+            <td><kbd>left wrist</kbd></td>
+            <td><kbd>s / shift+s</kbd></td>
+          </tr>
+          <tr>
+            <td><kbd>right wrist</kbd></td>
+            <td><kbd>d / shift+d</kbd></td>
+          </tr>	
+          <tr>
+            <td><kbd>left hand</kbd></td>
+            <td><kbd>v / shift+v</kbd></td>
+          </tr>
+          <tr>
+            <td><kbd>right hand</kbd></td>
+            <td><kbd>b / shift+b</kbd></td>
+          </tr>	
+        </table>
+    </div>	
+    
+    <div style="float:clear;">
+    </div>
+    
+  </div>
+  
+</body>
+</html>
